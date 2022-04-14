@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class Bag {
-    private ArrayList<String> bagArray;
+    private ArrayList<Item> bagArray;
 
     public Bag(){
         this.bagArray = new ArrayList<>();
     }
 
-    public void add(String item){
+    public void add(Item item){
         this.bagArray.add(item);
     }
 
@@ -20,15 +20,15 @@ public class Bag {
     }
 
 
-    public String getItem(int index){
+    public Item getItem(int index){
         return this.bagArray.get(0);
     }
-    public String returnItem(String item){
+    public String returnItem(Item item){
 
         for (int i = 0; i < bagArray.size(); i++) {
 
-            if (bagArray.get(i).equals(item)){
-                return bagArray.get(i);
+            if (bagArray.get(i).equals(item.getName())){
+                return bagArray.get(i).getName();
 
             }
         }
@@ -37,11 +37,9 @@ public class Bag {
 
     }
 
-    public void remove(String item){
+    public void remove(Item item){
         for (int i = 0; i < bagArray.size(); i++) {
-
-
-            if (bagArray.get(i).equals(item)){
+            if (bagArray.get(i).getName().equals(item)){
                 bagArray.remove(i);
             }
         }

@@ -1,6 +1,6 @@
 package com.company;
 
-public class Dog extends Pet{
+public class Dog extends Animal{
 
     private int age;
     public Dog(String name){
@@ -8,7 +8,13 @@ public class Dog extends Pet{
         this.age = 0;
     }
 
-    public void bark(){
-        System.out.println("Woof");
+    public Dog(String name, int age){
+        super(name);
+        this.age = age;
+    }
+
+    @Override
+    public void talk() {
+        System.out.println("Woof!");
     }
 }
