@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 public class Protagonist implements Mammal{
+    //An implementation of Mammal, our main hero. We choose their name, age and all other aspects
     private final String name;
     private final int age;
     private int points;
@@ -24,6 +25,8 @@ public class Protagonist implements Mammal{
         this.bag = new Bag();
         this.health = 10;
     }
+
+    //Always starts with points of 0 and health of 10
 
     public String getName(){
         return this.name;
@@ -88,4 +91,6 @@ public class Protagonist implements Mammal{
     public void run() {
         System.out.println("HUFF!");
     }
+
+    //The implementation of the interface Mammal
 }

@@ -1,10 +1,11 @@
 package com.company;
 
-public abstract class Animal implements Mammal{
+public abstract class Animal{
+    //An abstract class that sets all the general methods for Animal with the abstratc method of talk
     private String name;
     private int age;
-    private int damage;
-    private int health;
+    private int damage; //How much damage an Animal can do
+    private int health; //How much health an animal can have
 
 
 
@@ -54,17 +55,9 @@ public abstract class Animal implements Mammal{
         return this.damage;
     }
 
+    public int getHealth() {
+        return this.health;
+    }
+
     public void talk(){};
-
-    @Override
-    public void eat() {
-        this.health = this.health + 2;
-    }
-
-    @Override
-    public void run() {
-        System.out.println("RUFF!");
-    }
-
-
 }

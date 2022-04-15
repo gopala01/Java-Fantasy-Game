@@ -11,6 +11,7 @@ public class Main {
         int age = inputInt("How old are you " + name);
 
         Protagonist hero = new Protagonist(name, age);
+        //Implementing the class hero using their name and age
 
         print("Ok " + hero.getName() + " right now you have " + hero.getPoints() + " points");
 
@@ -27,24 +28,31 @@ public class Main {
         int petAge = inputInt("What is the age of " + pet.getName() + "?");
         pet.setAge(petAge);
 
+        //Creating a new pet, implementing the method setAge
         print("Well done " + hero.getName() + " for choosing a pet, you get 5 points");
         hero.addPoints(5);
+        //Adding on points to the user
+
 
 
         print("On the way your dog gets scared and anxious");
         print(pet.getName() + ": ");
         pet.talk();
         pet.talk();
+        //Using the method talk()
+
 
 
         print("You also hear thuds and you decide to ignore it");
 
         Monster mA  = new Monster("Aquarus", 3);
+        //Creating a new Monster
 
         mA.stomp();
         mA.stomp();
         Item toothbrush = new Item("Toothbrush", 2);
         Item sword = new Item("Sword", 5);
+        //Creating two new Items
         print("As you lean over to stroke him, you notice two items in front of you: A toothbrush and a sword");
         print(toothbrush.getName() + ": " + toothbrush.getDamage() + " damage \n" + sword.getName() + ": " + sword.getDamage() + " damage\nWhat would you like to add to your bag?");
 
@@ -122,8 +130,10 @@ public class Main {
         else {
             pet.eat();
         }
+        //Using the eat methods
 
         Monster mB = new Monster("Blightous", 10);
+        //Creating a new Monsyer
         print("You suddenly notice a second monster behind  you");
         mB.stomp();
 

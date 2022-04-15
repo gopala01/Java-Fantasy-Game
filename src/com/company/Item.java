@@ -1,6 +1,8 @@
 package com.company;
 
 public class Item {
+
+    //Class mammal, indicating what the name of the item is and how much damage it has.
     private int damage;
     private String name;
 
