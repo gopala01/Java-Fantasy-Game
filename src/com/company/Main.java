@@ -23,7 +23,7 @@ public class Main {
                 " to go hunting with your pet dog.");
 
         String petName = inputString("What would you like to name your dog?");
-        Animal pet = new Dog(petName, 4);
+        Dog pet = new Dog(petName, 4);
         int petAge = inputInt("What is the age of " + pet.getName() + "?");
         pet.setAge(petAge);
 
@@ -100,6 +100,8 @@ public class Main {
         checkPoints(hero.getPoints());
         print("You have a health of " + hero.getHealth() + " and " + hero.getPoints() + " points so you must keep going");
 
+        print(pet.getName() + " is happy now:");
+        pet.wagTail();
         int cureChoice = inputInt("From the monster you find a cure point. What would you like to do?" +
                 "\n1. Heal yourself\n2. Add to bag");
         Cure cureA = new Cure("Cure1", 2);

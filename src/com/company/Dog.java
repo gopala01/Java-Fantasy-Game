@@ -16,12 +16,11 @@ public class Dog extends Animal{
     }
 
     @Override
-    public void eat() {
-        this.health = this.health + 2;
+    public void talk() {
+        System.out.println("WOOF!");
     }
 
-
-
-
-
+    public String wagTail(){
+        return "SWISH! SWISH!";
+    }
 }
