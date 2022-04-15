@@ -15,7 +15,7 @@ public class Bag {
     }
 
 
-    public int getTotalItems(){
+    public int getSize(){
         return bagArray.size();
     }
 
@@ -37,7 +37,7 @@ public class Bag {
 
     }
 
-    public void remove(Item item){
+    public void removeItem(Item item){
         for (int i = 0; i < bagArray.size(); i++) {
             if (bagArray.get(i).getName().equals(item)){
                 bagArray.remove(i);

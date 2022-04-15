@@ -9,7 +9,9 @@ public class Item {
         this.damage = damage;
     }
 
-    public Item() {
+    public Item(String name) {
+        this.name = name;
+        this.damage = 0;
     }
 
 

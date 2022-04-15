@@ -3,9 +3,13 @@ package com.company;
 public class Monster extends Animal{
 
     private int damage;
-    public Monster(String name, int damage){
+    public Monster(String name){
         super(name);
-        this.damage = damage;
+        this.damage = 0;
+    }
+    public Monster(String name, int damage){
+        super(name, damage);
+
     }
 
 

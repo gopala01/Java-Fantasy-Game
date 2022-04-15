@@ -60,4 +60,9 @@ public abstract class Animal implements Mammal{
     public void eat() {
         this.health = this.health + 2;
     }
+
+    @Override
+    public void run() {
+        System.out.println("HUF!");
+    }
 }

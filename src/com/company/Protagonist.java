@@ -43,9 +43,9 @@ public class Protagonist implements Mammal{
     }
 
     public void removeItem(Item item){
-        for (int i = 0; i < bag.getTotalItems(); i++) {
+        for (int i = 0; i < bag.getSize(); i++) {
             if (bag.getItem(i).equals(item)){
-                this.bag.remove(item);
+                this.bag.removeItem(item);
 
             }
         }
@@ -57,6 +57,9 @@ public class Protagonist implements Mammal{
     }
 
 
+    public int getNumItems(){
+        return this.bag.getSize();
+    }
     public int getHealth(){
         return this.health;
     }
@@ -67,8 +70,22 @@ public class Protagonist implements Mammal{
         this.health = this.health - damage;
     }
 
+    public void getAllItems(){
+        for (int i = 0; i < this.bag.getSize(); i++) {
+            System.out.println((i+1) + "" + this.bag.getItem(i));
+        }
+    }
+
+
+
+
     @Override
     public void eat() {
         this.health = this.health + 2;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("HUFF!");
     }
 }

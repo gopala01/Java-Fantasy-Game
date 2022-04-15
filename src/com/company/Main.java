@@ -36,38 +36,41 @@ public class Main {
         pet.talk();
         pet.talk();
 
-        Monster mA  = new Monster("Aquarus", 3);
 
         print("You also hear thuds and you decide to ignore it");
 
+        Monster mA  = new Monster("Aquarus", 3);
+
         mA.stomp();
         mA.stomp();
-        Item baguette = new Item("baguette", 2);
+        Item toothbrush = new Item("Toothbrush", 2);
         Item sword = new Item("Sword", 5);
         print("As you lean over to stroke him, you notice two items in front of you: A toothbrush and a sword");
-        print(baguette.getName() + ": " + baguette.getDamage() + " damage \n" + sword.getName() + ": " + sword.getDamage() + " damage");
+        print(toothbrush.getName() + ": " + toothbrush.getDamage() + " damage \n" + sword.getName() + ": " + sword.getDamage() + " damage\nWhat would you like to add to your bag?");
 
         int itemChoice = chooseItem();
 
         if (itemChoice == 1){
-            hero.addItem(baguette);
-            print("A baguette? Maybe it can keep you healthier");
-            print("For putting a " + hero.getItem(0) + " in your bag you get " + baguette.getDamage() + " points");
-            hero.addPoints(baguette.getDamage());
+            hero.addItem(toothbrush);
+            print("A toothbrush? Maybe it can keep you healthier");
+            print("For putting a " + hero.getItem(0).getName() + " in your bag you get " + toothbrush.getDamage() + " points");
+            hero.addPoints(toothbrush.getDamage());
         }
         else {
             hero.addItem(sword);
             print("Wise choice! This will keep you safe");
-            print("For putting " + hero.getItem(0) + " in your bag you get " + sword.getDamage() + " points");
+            print("For putting " + hero.getItem(0).getName() + " in your bag you get " + sword.getDamage() + " points");
             hero.addPoints(sword.getDamage());
 
         }
+
+
         print("Now you see a monster in front of you, and you recognize this monster as:\n" + mA.getName() +
                 "\nDamage: " + mA.getDamage());
 
-        print("Right now in your bag you have " + hero.getItem(0));
+        print("Right now in your bag you have " + hero.getItem(0).getName());
 
-        int attackChoice = inputInt("What would you like to do?\n1. Attack with " + hero.getItem(0) +"\n2.Attack with your dog");
+        int attackChoice = inputInt("What would you like to do?\n1. Attack with " + hero.getItem(0).getName() +"\n2.Attack with your dog");
 
         attackChoice = checkNumber(attackChoice);
 
@@ -95,16 +98,74 @@ public class Main {
         checkHeroHealth(hero.getHealth());
 
         checkPoints(hero.getPoints());
-        print("You have a health of " + hero.getHealth() + " and " + hero.getPoints() + " so you must keep going");
+        print("You have a health of " + hero.getHealth() + " and " + hero.getPoints() + " points so you must keep going");
 
-        int cureChoice = inputInt("From the monster, you find health, you find a cure point. What would you like to do?" +
+        int cureChoice = inputInt("From the monster you find a cure point. What would you like to do?" +
                 "\n1. Heal yourself\n2. Add to bag");
-        Cure cure = new Cure("Cure1", 2);
+        Cure cureA = new Cure("Cure1", 2);
         if (cureChoice == 1){
-            cure.cure(2);
+            cureA.cure(hero);
         }
         else {
-            hero.addItem(cure);
+            hero.addItem(cureA);
+        }
+
+
+        int foodChoice = inputInt("On your way there you notice food. What would you like to do with it?\n1. Eat it\n2. Feed your dog");
+        foodChoice = checkNumber(foodChoice);
+
+        if (foodChoice == 1){
+            hero.eat();
+        }
+        else {
+            pet.eat();
+        }
+
+        Monster mB = new Monster("Blightous", 10);
+        print("You suddenly notice a second monster behind  you");
+        mB.stomp();
+
+        print("As this stomp is very loud, you both start running");
+        print(pet.getName() + ":");
+        pet.run();
+
+        print(hero.getName() + ":");
+        hero.run();
+        int choice = inputInt("You are confronted by the monster now, what do you do?\n1. Attack \n2. Run");
+
+        choice = checkNumber(choice);
+        if (choice == 1){
+            print("Right now in your bag you have " + hero.getItem(0));
+
+            int weaponChoice = inputInt("What would you like to do?\n1. Attack with " + hero.getItem(0) +"\n2.Attack with your dog");
+
+            weaponChoice = checkNumber(weaponChoice);
+
+            if (weaponChoice == 1){
+                int result = hero.getItem(0).getDamage() - mA.getDamage();
+
+                if (result > 0){
+                    hero.addPoints(result);
+                }
+                else {
+                    hero.removeHealth(-result);
+                }
+            }
+            else {
+                int result = pet.getDamage() - mA.getDamage();
+
+                if (result > 0){
+                    hero.addPoints(result);
+                }
+                else {
+                    hero.removeHealth(-result);
+                }
+            }
+
+            checkHeroHealth(hero.getHealth());
+
+            checkPoints(hero.getPoints());
+            print("You have a health of " + hero.getHealth() + " and " + hero.getPoints() + " so you must keep going");
         }
     }
 
@@ -112,7 +173,7 @@ public class Main {
 
 
     public static void checkPoints(int points){
-        if (points < 10 || points == 10){
+        if (points > 10 || points == 10){
             print("You have won the game");
             System.exit(0);
         }
@@ -120,7 +181,7 @@ public class Main {
     }
 
     public static void checkHeroHealth(int health){
-        if (health > 0 || health == 0){
+        if (health < 0 || health == 0){
             print("You have lost the game");
             System.exit(0);
         }
