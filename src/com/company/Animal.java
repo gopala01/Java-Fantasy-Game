@@ -63,6 +63,8 @@ public abstract class Animal implements Mammal{
 
     @Override
     public void run() {
-        System.out.println("HUF!");
+        System.out.println("RUFF!");
     }
+
+
 }
